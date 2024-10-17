@@ -25,6 +25,9 @@ const registerUser = async (req, res) => {
     await pool.query(query, [username, hash])
     res.status(201).send('User registered')
   } catch (error) {
+    if (error.code === '23505') {
+      return res.status(409).json({ error: 'Username already taken' }); // 409 Conflict
+    }
     console.error(error)
     res.status(500).send('Error registering user')
   }
