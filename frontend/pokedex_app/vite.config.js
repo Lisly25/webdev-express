@@ -15,6 +15,7 @@ export default defineConfig({
       '/api': {
         target: 'https://webdev-express.onrender.com',
         changeOrigin: true,
+        secure: true,
       },
     },
   },
