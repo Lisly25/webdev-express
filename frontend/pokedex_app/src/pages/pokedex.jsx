@@ -23,6 +23,7 @@ const Pokedex = () => {
   const limit = 20; // Number of Pokémon per page
   const abortControllerRef = useRef(null); // Ref to store the current AbortController
   const typingTimeoutRef = useRef(null);  // Ref to track the typing timeout
+  const scrollPositionRef = useRef(0); // Ref to store scroll position
 
   console.log("rendering Pokedex...");
 
@@ -110,9 +111,15 @@ const Pokedex = () => {
     }, 300); // 300ms delay before performing the search
   };
 
+  const storeCurrentScrollPos = () => {
+    const currentScrollPosition = window.scrollY;
+    console.log("captured currentScrollPosition:", currentScrollPosition);
+    scrollPositionRef.current = currentScrollPosition; // Store current scroll position
+  }
+
   const sortPokemon = async (sortOrderValue) => {
     console.log("sortPokemon() called", "sort by:", sortOrderValue);
-
+    storeCurrentScrollPos();
     setSortOrder(sortOrderValue);
     setOffset(0);
     setOffsetForSearching(0);
@@ -130,6 +137,7 @@ const Pokedex = () => {
 
   const shufflePokemon = async () => {
     console.log("shufflePokemon() called");
+    storeCurrentScrollPos();
     setSearchTerm("");
     setSortOrder("random");
     setOffset(0);
@@ -144,6 +152,7 @@ const Pokedex = () => {
 
   const loadMorePokemon = async () => {
     console.log("loadMorePokemon() called");
+    storeCurrentScrollPos();
     setIsLoading(true);
     setIsFetching(true);
     if (searchTerm === "") {
@@ -156,6 +165,22 @@ const Pokedex = () => {
     setIsFetching(false);
     setIsLoading(false);
   };
+
+  // Restore scroll position after pokemonList is updated
+  useEffect(() => {
+    if (pokemonList.length > 0) {
+        window.scrollTo(0, scrollPositionRef.current);
+        console.log("Scrolled to:", scrollPositionRef.current);
+    }
+  }, [pokemonList]);
+
+  // Restore scroll position after matchingList is updated
+  useEffect(() => {
+    if (matchingList.length > 0) {
+        window.scrollTo(0, scrollPositionRef.current);
+        console.log("Scrolled to:", scrollPositionRef.current);
+    }
+  }, [matchingList]);
 
   const resetAll = () => {
     setPokemonList([]);
