@@ -24,6 +24,9 @@ const Navbar = () => {
         <div className="font-sans text-zinc-950 text-3xl py-4 flex justify-evenly">
           <NavLink to="/Profile">My Profile</NavLink>
           <NavLink to="/">Pokedex</NavLink>
+    	    <NavLink to="/Community">
+						Community
+					</NavLink>
 
           {!isAuthenticated && (
             <NavLink to="/Login" className="hover:text-white">

@@ -16,7 +16,6 @@ const RegistrationForm = (props) => {
   const handleUsername = (event) => {
     setUsername(event.target.value);
   };
-
   const attemptRegistration = (event) => {
     event.preventDefault();
     const newUser = {

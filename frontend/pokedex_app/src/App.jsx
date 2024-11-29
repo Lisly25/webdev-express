@@ -12,11 +12,12 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import ErrorBoundary from "./ErrorBoundary";
 import { AuthProvider } from "./AuthContext"; // Import AuthProvider
+import Community from "./components/Community";
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
+    <Router>
+      <AuthProvider>
         <div id="root">
           <Navbar />
           <main>
@@ -35,12 +36,13 @@ function App() {
               <Route path="/pokemon/:name" element={<PokemonProfile />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms" element={<TermsOfService />} />
+              <Route path="/Community" element={<Community />} />
             </Routes>
           </main>
           <Footer />
         </div>
-      </Router>
-    </AuthProvider>
+      </AuthProvider>
+    </Router>
   );
 }
 

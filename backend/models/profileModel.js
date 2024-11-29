@@ -23,7 +23,7 @@ const updateProfile = async (id, name, bio, profile_pic) => {
 
 const updateProfilePic = async (id, profile_pic) => {
   const result = await db.query(
-    "UPDATE profiles SET profile_pic = $1, updated_at = NOW() WHERE _user_id = $2 RETURNING *",
+    "UPDATE profiles SET profile_pic = $1, updated_at = NOW() WHERE user_id = $2 RETURNING *",
     [profile_pic, id]
   );
   if (result.rows.length === 0) {
