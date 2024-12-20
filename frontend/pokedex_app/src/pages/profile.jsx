@@ -177,10 +177,10 @@ const Profile = () => {
             <div className="w-fit text-gray-700 dark:text-gray-400 text-md">
             {
               !editingBio ?
-                (<p className="m-3 text-lg">{ownData.bio}</p>)
+                (<p className="m-3 text-3xl">{ownData.bio}</p>)
                 :
                 (
-                  <section className="text-lg">
+                  <section className="text-3xl text-gray-900">
                     <textarea
                       spellCheck="true"
                       name="new_bio"
