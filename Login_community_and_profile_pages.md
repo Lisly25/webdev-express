@@ -24,3 +24,22 @@ The same is true for disliked pokemon
 
 ![](https://github.com/Lisly25/webdev-express/blob/main/gifs/User_disliking_pokemon.gif)
 
+## Community page
+
+This page lists all the registered users. It is available only to logged in users
+
+Pagination
+
+![](https://github.com/Lisly25/webdev-express/blob/main/gifs/Community_page_pagination.gif)
+
+Resizing
+
+![](https://github.com/Lisly25/webdev-express/blob/main/gifs/Community_page_resizing.gif)
+
+Users can be searched by name
+
+![](https://github.com/Lisly25/webdev-express/blob/main/gifs/Community_page_search.gif)
+
+The names and pictures also serve as links, letting other users' profiles be viewed
+
+![](https://github.com/Lisly25/webdev-express/blob/main/gifs/Viewing_other_users_profiles.gif)
